@@ -7,12 +7,21 @@ st.set_page_config(page_title="Staj Chatbot", page_icon="🎓")
 st.title("🎓 Staj Asistanı")
 st.write("Staj süreciyle ilgili merak ettiğin her şeyi sorabilirsin!")
 
-# Veritabanını sadece bir kere yükle (her mesajda tekrar yüklememek için)
 @st.cache_resource
 def veritabani_yukle():
-    return veritabani_olustur()
+    from document_loader import tum_dokumanlari_yukle
+    from text_splitter import tum_dokumanlari_parcala
+    from vector_db import veritabani_olustur, parcalari_veritabanina_ekle
 
-koleksiyon = veritabani_yukle()
+    koleksiyon = veritabani_olustur()
+
+    # Eğer veritabanı boşsa (ilk çalıştırma), dökümanları işleyip ekle
+    if koleksiyon.count() == 0:
+        dokumanlar = tum_dokumanlari_yukle()
+        parcalar = tum_dokumanlari_parcala(dokumanlar)
+        parcalari_veritabanina_ekle(parcalar, koleksiyon)
+
+    return koleksiyon
 
 # Sohbet geçmişini hafızada tut
 if "mesajlar" not in st.session_state:
