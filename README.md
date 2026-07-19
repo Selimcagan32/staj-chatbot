@@ -1,6 +1,7 @@
 <p align="center">
   <img src="gorseller/okul_logo.png" alt="Okul Logo" width="120"/>
 </p>
+
 # AI Staj Asistanı
 
 Üniversite öğrencilerinin staj süreciyle ilgili sorularını, okulun resmi staj dökümanlarına dayanarak yanıtlayan bir **RAG (Retrieval-Augmented Generation)** tabanlı yapay zeka chatbot'u.
