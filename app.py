@@ -22,6 +22,7 @@ def veritabani_yukle():
         parcalari_veritabanina_ekle(parcalar, koleksiyon)
 
     return koleksiyon
+koleksiyon = veritabani_yukle()
 
 # Sohbet geçmişini hafızada tut
 if "mesajlar" not in st.session_state:
