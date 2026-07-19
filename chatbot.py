@@ -26,7 +26,7 @@ SORU: {soru}
 CEVAP:"""
 
     yanit = client.models.generate_content(
-        model="gemini-flash-latest",
+        model="gemini-flash-lite-latest",
         contents=prompt
     )
     return yanit.text
