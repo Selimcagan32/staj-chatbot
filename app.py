@@ -1,10 +1,19 @@
 import streamlit as st
 from vector_db import veritabani_olustur
 from chatbot import cevap_uret
+from PIL import Image
 
-st.set_page_config(page_title="Staj Chatbot", page_icon="🎓")
+logo = Image.open("gorseller/okul_logo.png")
 
-st.title("🎓 Staj Asistanı")
+st.set_page_config(page_title="AI Staj Asistanı", page_icon=logo)
+
+# Başlığın yanında da logoyu göstermek için
+col1, col2 = st.columns([1, 5])
+with col1:
+    st.image(logo, width=80)
+with col2:
+    st.title("AI Staj Asistanı")
+
 st.write("Staj süreciyle ilgili merak ettiğin her şeyi sorabilirsin!")
 
 @st.cache_resource
